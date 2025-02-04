@@ -1,3 +1,13 @@
+# PX4 Controller
+
+Original repo:
+1. https://github.com/aphasiayc/px4ctrl
+2. https://github.com/ZJU-FAST-Lab/Fast-Drone-250
+
+
+---
+*Original README.md*
+
 From ZJU-FAST-Lab/Fast-Drone-250
 
 # PX4 controller  除了最后一章“PX4 Controller详细介绍”以外都先看一遍免得踩坑
