@@ -4,5 +4,5 @@
 		<param name="time_interval" value="1.0" />
 		<param name="mass_kg" value="10.7" />
 	</node>
- 
+
 </launch>

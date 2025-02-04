@@ -1,22 +1,22 @@
 #ifndef __INPUT_H
 #define __INPUT_H
 
-#include <ros/ros.h>
-#include <Eigen/Dense>
-
-#include <sensor_msgs/Imu.h>
-#include <quadrotor_msgs/PositionCommand.h>
-#include <quadrotor_msgs/TakeoffLand.h>
+#include <mavros_msgs/ExtendedState.h>
 #include <mavros_msgs/RCIn.h>
 #include <mavros_msgs/State.h>
-#include <mavros_msgs/ExtendedState.h>
+#include <quadrotor_msgs/PositionCommand.h>
+#include <quadrotor_msgs/TakeoffLand.h>
+#include <ros/ros.h>
 #include <sensor_msgs/BatteryState.h>
+#include <sensor_msgs/Imu.h>
 #include <uav_utils/utils.h>
+
+#include <Eigen/Dense>
+
 #include "PX4CtrlParam.h"
 
-class RC_Data_t
-{
-public:
+class RC_Data_t {
+ public:
   double mode;
   double gear;
   double reboot_cmd;
@@ -46,12 +46,11 @@ public:
   void check_validity();
   bool check_centered();
   void feed(mavros_msgs::RCInConstPtr pMsg);
-  bool is_received(const ros::Time &now_time);
+  bool is_received(const ros::Time& now_time);
 };
 
-class Odom_Data_t
-{
-public:
+class Odom_Data_t {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   Eigen::Vector3d p;
   Eigen::Vector3d v;
@@ -66,9 +65,8 @@ public:
   void feed(nav_msgs::OdometryConstPtr pMsg);
 };
 
-class Imu_Data_t
-{
-public:
+class Imu_Data_t {
+ public:
   Eigen::Quaterniond q;
   Eigen::Vector3d w;
   Eigen::Vector3d a;
@@ -80,9 +78,8 @@ public:
   void feed(sensor_msgs::ImuConstPtr pMsg);
 };
 
-class State_Data_t
-{
-public:
+class State_Data_t {
+ public:
   mavros_msgs::State current_state;
   mavros_msgs::State state_before_offboard;
 
@@ -90,18 +87,16 @@ public:
   void feed(mavros_msgs::StateConstPtr pMsg);
 };
 
-class ExtendedState_Data_t
-{
-public:
+class ExtendedState_Data_t {
+ public:
   mavros_msgs::ExtendedState current_extended_state;
 
   ExtendedState_Data_t();
   void feed(mavros_msgs::ExtendedStateConstPtr pMsg);
 };
 
-class Command_Data_t
-{
-public:
+class Command_Data_t {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   Eigen::Vector3d p;
   Eigen::Vector3d v;
@@ -117,9 +112,8 @@ public:
   void feed(quadrotor_msgs::PositionCommandConstPtr pMsg);
 };
 
-class Battery_Data_t
-{
-public:
+class Battery_Data_t {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   double volt{0.0};
   double percentage{0.0};
@@ -131,12 +125,11 @@ public:
   void feed(sensor_msgs::BatteryStateConstPtr pMsg);
 };
 
-class Takeoff_Land_Data_t
-{
-public:
+class Takeoff_Land_Data_t {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   bool triggered{false};
-  uint8_t takeoff_land_cmd; // see TakeoffLand.msg for its defination
+  uint8_t takeoff_land_cmd;  // see TakeoffLand.msg for its defination
 
   quadrotor_msgs::TakeoffLand msg;
   ros::Time rcv_stamp;
