@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Main px4ctrl node -->
+    <node pkg="px4ctrl" type="px4ctrl_node" name="px4ctrl" output="screen">
+        <remap from="mavros/state" to="/mavros/state" />
+        <remap from="mavros/extended_state" to="/mavros/extended_state" />
+        <remap from="mavros/imu/data" to="/mavros/imu/data" />
+        <remap from="mavros/rc/in" to="/mavros/rc/in" />
+        <remap from="mavros/battery" to="/mavros/battery" />
+        <remap from="mavros/setpoint_raw/attitude" to="/mavros/setpoint_raw/attitude" />
+        <remap from="traj_start_trigger" to="/traj_start_trigger" />
+        <remap from="debugPx4ctrl" to="/debugPx4ctrl" />
+        <remap from="mavros/set_mode" to="/mavros/set_mode" />
+        <remap from="mavros/cmd/arming" to="/mavros/cmd/arming" />
+        <remap from="mavros/cmd/command" to="/mavros/cmd/command" />
+        <remap from="~odom" to="/mavros/local_position/odom" />
+        <remap from="~cmd" to="/planning/pos_cmd" />
+        <remap from="px4ctrl_mode" to="/px4ctrl_mode" />
+        <rosparam command="load" file="$(find px4ctrl)/config/ctrl_param_fpv.yaml" />
+    </node>
+
+    <!-- Takeoff script node -->
+    <node pkg="px4ctrl" type="takeoff.sh" name="takeoff" output="screen" />
+    <node pkg="px4ctrl" type="increase_frequency.sh" name="increase_frequency" output="screen" />
+</launch>
