@@ -4,6 +4,7 @@ Original repo:
 1. https://github.com/aphasiayc/px4ctrl
 2. https://github.com/ZJU-FAST-Lab/Fast-Drone-250
 
+For `quadrotor_msgs`, refer [this](https://github.com/ChanJoon/uav_simulator)
 
 ---
 *Original README.md*
