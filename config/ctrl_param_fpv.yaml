@@ -2,9 +2,9 @@
 # ⭐⭐⭐  Set parameters carefully for satisfied performance!   ⭐⭐⭐ #
 #########################################################################
 
-mass        : 2.488 # kg
+mass        : 1.535 # 2.488 # kg
 gra         : 9.81
-pose_solver : 1     # 0:From ZhepeiWang (drag & less singular) 1:From ZhepeiWang, 2:From rotor-drag
+pose_solver : 0     # 0:From ZhepeiWang (drag & less singular) 1:From ZhepeiWang, 2:From rotor-drag
 ctrl_freq_max   : 100.0
 use_bodyrate_ctrl: false
 max_manual_vel: 0.8
